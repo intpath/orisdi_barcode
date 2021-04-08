@@ -12,7 +12,7 @@ class CustomOnBarcodeController(StockBarcodeController):  # Inherit in your cust
         """
         corresponding_picking = request.env['stock.picking'].search([
             ('origin', '=', barcode),
-            ('state', 'in', ['assigned', 'confirmed']
+            ('state', 'in', ['assigned', 'confirmed'] )
         ], limit=1)
         if corresponding_picking:
             return self.get_action(corresponding_picking.id)
