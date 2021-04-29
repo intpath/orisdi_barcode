@@ -1,12 +1,11 @@
 <odoo>
     <data>
-
-        <template id="saleorder_barcode_body">
+        <template id="sale_order_barcode_body">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
                         <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 500, 100)" style="width:600px;height:140px;margin-left: -40px;" alt="Barcode"/>
-                        <p t-esc="o.name" style="margin: 0 auto; text-align: center; font-size: x-large"/>
+                        <p t-esc="o.name" style="margin-top: -4; text-align: center; font-size: x-large"/>
                     </div>
                 </t>
             </t>
@@ -17,26 +16,25 @@
         <field name="default" eval="True"/>
         <field name="format">custom</field>
         <field name="page_height">80</field>
-        <field name="page_width">30</field>
+        <field name="page_width">35</field>
         <field name="orientation">Landscape</field>
-        <field name="margin_top">2</field>
+        <field name="margin_top">6</field>
         <field name="margin_bottom">2</field>
         <field name="margin_left">2</field>
-        <field name="margin_right">2</field>
+        <field name="margin_right">4</field>
         <field name="header_line" eval="False"/>
         <field name="header_spacing">10</field>
         <field name="dpi">90</field>
     </record>
 
     <report id="saleorder_barcode"
-        string="Barcode"
-        model="sale.order"
-        report_type="qweb-pdf"
-        name="orisdi_barcode.saleorder_barcode_body"
-        file="orisdi_barcode.saleorder_barcode_body"
-        paperformat="orisdi_barcode.barcode_paperformat"
-        print_report_name="'%s Barcode' % (object.name)"
-    />
-
+            string="Barcode"
+            model="sale.order"
+            report_type="qweb-pdf"
+            name="orisdi_barcode.sale_order_barcode_body"
+            file="orisdi_barcode.sale_order_barcode_body"
+            paperformat="orisdi_barcode.barcode_paperformat"
+            print_report_name="'%s Barcode' % (object.name)"
+        />
     </data>
 </odoo>

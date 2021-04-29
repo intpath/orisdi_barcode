@@ -18,6 +18,7 @@
 
     # always loaded
     'data': [
-        'reports/saleorder_barcode_report.xml',
+        'reports/sale_order_barcode_report.xml',
+        'reports/stock_picking_barcode_report.xml',
     ],
 }

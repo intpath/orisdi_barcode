@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <template id="stock_picking_barcode_body">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 500, 100)" style="width:600px;height:140px;margin-left: -40px;" alt="Barcode"/>
+                        <p t-esc="o.origin" style="margin-top: -4; text-align: center; font-size: x-large"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <report id="stockpicking_barcode"
+                string="Barcode"
+                model="stock.picking"
+                report_type="qweb-pdf"
+                name="orisdi_barcode.stock_picking_barcode_body"
+                file="orisdi_barcode.stock_picking_barcode_body"
+                paperformat="orisdi_barcode.barcode_paperformat"
+                print_report_name="'%s Barcode' % (object.name)"
+            />
+    </data>
+</odoo>
