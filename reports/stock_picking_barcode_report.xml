@@ -4,7 +4,7 @@
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
                     <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
-                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.name, 500, 100)" style="width:600px;height:140px;margin-left: -40px;" alt="Barcode"/>
+                        <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('Code128', o.origin, 500, 100)" style="width:600px;height:140px;margin-left: -40px;" alt="Barcode"/>
                         <p t-esc="o.origin" style="margin-top: -4; text-align: center; font-size: x-large"/>
                     </div>
                 </t>
