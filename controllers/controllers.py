@@ -11,7 +11,7 @@ class CustomOnBarcodeController(StockBarcodeController):  # Inherit in your cust
         """ If barcode represents a picking, open it
         """
         # using query instead of search for faster search result
-        self.env.cr.execute("SELECT id FROM stock_picking WHERE origin = '%s' and (state = 'assigned' or state = 'confirmed')" % (barcode))
+        request.env.cr.execute("SELECT id FROM stock_picking WHERE origin = '%s' and (state = 'assigned' or state = 'confirmed')" % (barcode))
         # result are a list of records
         res = request.env.cr.fetchall()
         if res:
